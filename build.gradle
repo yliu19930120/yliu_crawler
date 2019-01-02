@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+tasks.withType(JavaCompile) {  
+    options.encoding = "UTF-8"  
+}  
+
+dependencies {
+
+	
+	compile project(':yliu_utils_mongo')
+	
+	compile project(':yliu_crawler_core')
+	
+	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+	
+	compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+	
+    testImplementation 'junit:junit:4.12'
+}
