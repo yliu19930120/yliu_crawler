@@ -12,6 +12,8 @@ dependencies {
 	
 	compile project(':yliu_utils_mongo')
 	
+	compile project(':yliu_utils_redis')
+	
 	compile project(':yliu_crawler_core')
 	
 	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'

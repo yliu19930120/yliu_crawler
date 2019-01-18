@@ -3,7 +3,7 @@ package com.yliu.crawler.jobcrawler;
 import java.util.List;
 
 import com.yliu.crawler.core.queue.BufferQueue;
-import com.yliu.crawler.utils.RedisUtils;
+import com.yliu.utils.RedisUtils;
 
 
 public class RedisQueue implements BufferQueue{
