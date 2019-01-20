@@ -20,6 +20,8 @@ public class MongoStorer implements Storer{
 		Document source = col.find(filter).first();
 		if(source==null){
 			col.insertOne(doc);
+		}else {
+			col.replaceOne(filter, source);
 		}
 		return 1;
 	}
