@@ -16,13 +16,7 @@ public class MongoStorer implements Storer{
 	public int save(Item item) {
 		MongoCollection<Document> col = MongoUtil.getCollection("crawler", "Job");
 		Document doc = MongoUtil.adaptToDocument(item);
-		Bson filter = Filters.eq("items.jobId", item.getItems().get("jobId"));
-		Document source = col.find(filter).first();
-		if(source==null){
-			col.insertOne(doc);
-		}else {
-			col.replaceOne(filter, source);
-		}
+		col.insertOne(doc);
 		return 1;
 	}
 
