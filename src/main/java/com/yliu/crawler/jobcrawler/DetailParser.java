@@ -90,7 +90,7 @@ public class DetailParser implements Parser{
 		items.put("salaryUpperLimit", salraies[1]);
 		item.setItems(items);
 		item.setSource(source);
-		item.setCatchDate(new Date());
+		item.setCatchDate(DateUtils.aligningDateToDay(new Date()));
 		return page;
 
 	}
