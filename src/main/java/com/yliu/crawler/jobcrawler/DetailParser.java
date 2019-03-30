@@ -20,7 +20,7 @@ import com.yliu.crawler.utils.DateUtils;
 
 public class DetailParser implements Parser{
 	
-	
+	private Integer keyWordType;
 	private static final List<String> EDU_BACK = Arrays.asList("大专","本科","硕士 ","博士");
 	
 	private static final Map<String,Double> UNITS= new HashMap<>();
@@ -32,6 +32,13 @@ public class DetailParser implements Parser{
 		UNITS.put("万/年", 833.33);
 	}
 	
+	
+	public DetailParser(Integer keyWordType) {
+		super();
+		this.keyWordType = keyWordType;
+	}
+
+
 	@Override
 	public Page parse(String input, String source) throws EllegalityUrlCatchtException {
 		Page page = new Page();
@@ -88,6 +95,7 @@ public class DetailParser implements Parser{
 		items.put("issueDate", issueDate);
 		items.put("salaryLowerLimit", salraies[0]);
 		items.put("salaryUpperLimit", salraies[1]);
+		items.put("keyWordType", keyWordType);
 		item.setItems(items);
 		item.setSource(source);
 		item.setCatchDate(DateUtils.aligningDateToDay(new Date()));
