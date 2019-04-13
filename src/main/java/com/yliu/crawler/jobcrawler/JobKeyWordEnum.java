@@ -13,6 +13,8 @@ public enum JobKeyWordEnum {
 	FRONT_END ("前端",3,"前端开发者"),
 	GO("Go",4,"Go语言的开发者"),
 	KOTLIN("Kotlin",5,"Kotlin语言的开发者"),
+	IOS("IOS",6,"IOS的开发者"),
+	ANDRIOD("ANDRIOD",7,"ANDRIOD的开发者"),
 	;
 	
 	private JobKeyWordEnum(String key, Integer keyType, String description) {
