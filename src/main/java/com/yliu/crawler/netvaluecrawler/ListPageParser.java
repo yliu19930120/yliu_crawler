@@ -2,14 +2,7 @@ package com.yliu.crawler.netvaluecrawler;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import com.yliu.crawler.core.bean.Item;
 import com.yliu.crawler.core.bean.Page;

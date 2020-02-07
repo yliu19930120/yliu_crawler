@@ -1,10 +1,8 @@
 package com.yliu.crawler.jobcrawler;
 
 import org.bson.Document;
-import org.bson.conversions.Bson;
 
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
 import com.yliu.crawler.core.bean.ErrorPage;
 import com.yliu.crawler.core.bean.Item;
 import com.yliu.crawler.core.persistence.Storer;

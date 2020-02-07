@@ -1,10 +1,14 @@
 package com.yliu.crawler.viedocrawler;
 
+import org.bson.Document;
+
+import com.mongodb.client.MongoCollection;
 import com.yliu.crawler.commons.RedisQueue;
 import com.yliu.crawler.core.crawler.Crawler;
 import com.yliu.crawler.core.parser.Parser;
 import com.yliu.crawler.core.persistence.Storer;
 import com.yliu.crawler.core.queue.BufferQueue;
+import com.yliu.utils.MongoUtil;
 
 public class ViedoCrawler {
 	
@@ -15,6 +19,13 @@ public class ViedoCrawler {
 		Parser targetParser = new DetailParser();
 		Storer storer = new VedioStorer();
 		BufferQueue queue = new RedisQueue("vedio");
+		
+		MongoCollection<Document> actorCol = MongoUtil.getCollection("crawler", "Actor");
+		MongoCollection<Document> vedioCol = MongoUtil.getCollection("crawler", "Vedio");
+		//先全删掉
+		actorCol.deleteMany(new Document());
+		vedioCol.deleteMany(new Document());
+		
 		Crawler
 		.create()
 		.setParser(parser)
