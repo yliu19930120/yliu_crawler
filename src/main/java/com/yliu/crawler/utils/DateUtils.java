@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.jsoup.helper.StringUtil;
+
 public class DateUtils {
 
 	/**
@@ -13,6 +15,10 @@ public class DateUtils {
 	 * @return
 	 */
 	public static Date strToDate(String str,String format){
+		
+		if(StringUtil.isBlank(str)){
+			return null;
+		}
 	       SimpleDateFormat sdf = new SimpleDateFormat(format);
 	       try {
 			return sdf.parse(str);

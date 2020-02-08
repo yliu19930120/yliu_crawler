@@ -51,5 +51,11 @@ public class RedisQueue implements BufferQueue{
 		}
 		return false;
 	}
+	@Override
+	public void clear() {
+		Jedis jedis = RedisUtils.getJedis();
+		jedis.del(key);
+		jedis.close();
+	}
 
 }
