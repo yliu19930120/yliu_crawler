@@ -1,12 +1,12 @@
 package com.yliu.crawler.torrentcrawler;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mongodb.client.MongoCollection;
 import com.yliu.crawler.commons.RedisQueue;
@@ -18,6 +18,8 @@ import com.yliu.utils.MongoUtil;
 
 public class TorrentCrawler {
 	
+	private final static Logger log = LoggerFactory.getLogger(TorrentCrawler.class);
+	
 	private static final String P_URL = "https://www.torrentkitty.app";
 	
 	public void catchTorrent(){
@@ -25,10 +27,11 @@ public class TorrentCrawler {
 		List<String> keys = StreamSupport
 				.stream(vedioCol.distinct("code", String.class).spliterator(), false)
 				.collect(Collectors.toList());
-		keys.forEach(this::catchTorrent);
+		log.info("得到关键字集合size={}", keys.size());
+		keys.forEach(this::catchTorrentByKey);
 	}
 	
-	public void catchTorrent(String key){
+	public void catchTorrentByKey(String key){
 		Parser parser = new TorrentListParser();
 		Parser targetParser = new TorrentDetailParser(key);
 		Storer storer = new TorrentStorer();
