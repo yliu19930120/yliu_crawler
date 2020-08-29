@@ -1,5 +1,6 @@
 package com.yliu.crawler.viedocrawler;
 
+import com.yliu.crawler.core.queue.JavaQueue;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
@@ -12,14 +13,14 @@ import com.yliu.utils.MongoUtil;
 
 public class ViedoCrawler {
 	
-	private final static String url = "https://www.newfhk.com/nvyouku/";
+	private final static String url = "https://www.nrtvip.net/find.html";
 	
 	public void catchVedio(){
 		Parser parser = new ListPageParser();
 		Parser targetParser = new DetailParser();
 		Storer storer = new VedioStorer();
-		BufferQueue queue = new RedisQueue("vedio");
-		
+//		BufferQueue queue = new RedisQueue("vedio");
+		BufferQueue queue = new JavaQueue();
 		MongoCollection<Document> actorCol = MongoUtil.getCollection("crawler", "Actor");
 		MongoCollection<Document> vedioCol = MongoUtil.getCollection("crawler", "Vedio");
 		//先全删掉
